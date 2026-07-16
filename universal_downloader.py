@@ -25,6 +25,8 @@ def download_video(url, save_dir):
     ydl_opts = {
         # Force yt-dlp to download the best video and best audio separately and merge them if possible
         'format': 'bestvideo+bestaudio/best',
+        # Prioritize H.264 (AVC) video codecs so it works in video editors like Premiere/CapCut without HEVC issues
+        'format_sort': ['vcodec:h264', 'res', 'acodec:m4a'],
         # Merge into mp4 container
         'merge_output_format': 'mp4',
         'outtmpl': out_path,
